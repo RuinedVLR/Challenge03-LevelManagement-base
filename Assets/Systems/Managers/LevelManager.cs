@@ -6,10 +6,22 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject lvl1;
     [SerializeField] private GameObject lvl2;
+    GameObject current;
 
-    public void LevelChange()
+    [SerializeField] Transform player;
+
+    private void Start()
     {
-        lvl1.SetActive(false);
-        lvl2.SetActive(true);
+        current = lvl1;
+    }
+
+    public void LevelChange(GameObject targetLevel, Transform spawnPoint)
+    {
+        current.SetActive(false);
+        targetLevel.SetActive(true);
+
+        current = targetLevel;
+
+        player.position = spawnPoint.position;
     }
 }

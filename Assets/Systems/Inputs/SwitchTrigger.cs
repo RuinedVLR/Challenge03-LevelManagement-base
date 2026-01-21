@@ -5,6 +5,9 @@ public class SwitchTrigger : MonoBehaviour
 
     public LevelManager levelManager;
 
+    public GameObject levelToActivate;
+    public Transform spawnLocation;
+
     private void Start()
     {
         levelManager = ServiceHub.Instance.levelManager;
@@ -15,7 +18,7 @@ public class SwitchTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player has entered the switch trigger area.");
-            levelManager.LevelChange();
+            levelManager.LevelChange(levelToActivate, spawnLocation);
         }
     }
 }
